@@ -1,5 +1,5 @@
 """
-Variables are a places to store values
+Variables are names that refer to values stored in memory
 There are memory space where we can store values and variables act as access point to that memory unit
 """
 
@@ -20,13 +20,25 @@ Output:
 """
 
 word = "Ayousocrazy"
-# word is a variable carrying string value.
+# word is a variable carrying string value also called a string varriable
 # String are collection of character and character is a single alphanumeric(A to Z, a to z and 0 to 9) as well as special symbols 
 print(word)
 """
 Output:
 Ayousocrazy
 """
+
+
+# You can check the type of variable using type(variable)
+number, sigma =  67, "male"
+
+print (type(number), type(sigma))
+"""
+Output:
+<class 'int'> <class 'str'>
+"""
+# the variable type is in class because everything in python is an object and 67 is an instance(like child) of class int
+
 
 word = "replaced :)"
 # the program runs from top to bottom and the value of variables can also change
@@ -36,6 +48,27 @@ Output:
 replaced :)
 """
 # the variable word previously had value "Ayousocrazy" when defined again the value changes to "replaced :)"
+
+word = 2
+print(word)
+"""
+Output:
+2
+"""
+# you can also replace the type of value 
+
+
+"""
+You can also delete the value of a variable using del
+"""
+password = "BadDog:("
+del password
+print(password)
+# Now we cannot access "BadDog:(" because it has been deleted
+# Will return password is not defined
+
+
+# Imp: variable doesn't hold the actual value. it holds the memory reference of the value
 
 
 """
