@@ -1,5 +1,6 @@
 """
 Tuples are similar as lists but defined using () sign and tuples are immutable(unchangaeable)
+Looping through tuple are faster than list
 """
 
 result = ("Arsenal", 91, "Man United", 99)
