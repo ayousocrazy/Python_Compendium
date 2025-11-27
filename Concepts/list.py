@@ -1,5 +1,5 @@
 """
-Lists are collection of multiple values under a single name defined by using [] sign
+Lists are collection of multiple values under a single name defined using [] sign
 Lists are ordered and are mutable(changeable)
 """
 
