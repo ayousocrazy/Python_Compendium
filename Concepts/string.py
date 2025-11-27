@@ -3,8 +3,8 @@ string = "Python Compendium"
 """
 Strings behave like a list of characters but are IMMUTABLE
 IMMUTABLE means that once it is created it's value cannot be changed
-Strings have an order
-Here string = "Python Compendium" its order goes
+Strings have an order and we can access character of string with it's index values
+Here string = "Python Compendium" its order goes or it's index value goes like
 P = 0
 y = 1
 t = 2
@@ -95,8 +95,8 @@ Starts from -1 and the step is -1 so -1, -2, -3, ......
 
 # -------------------------------------------------------------------------------------------------------------------------
 
-# string[0:6] = "Javascript"
-# print(string)
+string[0:6] = "Javascript"
+print(string)
 # This will raise a error as strings are immutable
 
 new_string = "Javascript" + string[6:]
@@ -136,8 +136,8 @@ example_str2 = "Man United"
 score1 = 91
 score2 = 99
 
-# result = example_str1 + ":" + score1 + " & " + example_str2 + ":" + score2
-# print(result)
+result = example_str1 + ":" + score1 + " & " + example_str2 + ":" + score2
+print(result)
 # This will raise an error as we cannot combine string and integer
 
 # We use formated string instead
