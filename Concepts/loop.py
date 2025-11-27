@@ -25,6 +25,8 @@ else:
 # You can add a break to break out of the loop at any time 
 
 for x in range(1, 5):
+    if x.lower() == 'tomato':
+        continue
     print(x)
 else:
     print("Loop Ended")
