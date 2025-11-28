@@ -1,5 +1,5 @@
 from array import *
-from numpy import array as arr, linspace, arange, ones, zeros, logspace, geomspace
+from numpy import array as arr, linspace, arange, ones, zeros, logspace, geomspace, concatenate
 
 """
 Array in python are collection of different values of same data type
@@ -139,4 +139,63 @@ print(numpy_arr)
 Output:
 [1. 1. 1. 1. 1.]
 [0. 0. 0. 0. 0.]
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+example1 = arr([1, 2, 3, 4, 5, 6, 7])
+example2 = arr([7, 6, 5, 4, 3, 2, 1])
+
+print(example2 + 4)
+print(example1 + example2)
+print(concatenate([example1, example2]))
+print(sum(example1))
+"""
+Output:
+[11 10  9  8  7  6  5]
+[8 8 8 8 8 8 8]
+[1 2 3 4 5 6 7 7 6 5 4 3 2 1]
+28
+
+You can conduct these operations and more on array 
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+array_ex = arr([11, 22, 33, 44, 55, 66, 77, 88, 99])
+
+array_copy = array_ex
+print(id(array_ex))
+print(id(array_copy))
+print(array_ex)
+print(array_copy)
+array_ex[0] = 10
+print(array_ex)
+print(array_copy)
+"""
+This is called Aliasing as you can modify one using other and both point to same memory address
+"""
+
+array_copy = array_ex.view()
+print(id(array_ex))
+print(id(array_copy))
+print(array_ex)
+print(array_copy)
+array_ex[0] = 11
+print(array_ex)
+print(array_copy)
+"""
+This is called shallow copy where you still one modifies with other
+"""
+
+array_copy = array_ex.copy()
+print(id(array_ex))
+print(id(array_copy))
+print(array_ex)
+print(array_copy)
+array_ex[0] = 10
+print(array_ex)
+print(array_copy)
+"""
+This is called deep copy
 """
