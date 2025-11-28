@@ -1,8 +1,9 @@
 from array import *
+from numpy import array as arr, linspace, arange, ones, zeros, logspace, geomspace
 
 """
 Array in python are collection of different values of same data type
-It is defined using the array function of array module
+It is defined using the array function of array module or using numpy
 We also need to define the data type of array
 """
 
@@ -53,6 +54,7 @@ print(nums.typecode)
 # this gives the type of data in the array 
 
 """
+the type of data must be explicitly defined
 i for signed integer
 I for unsigned integer
 l for large signed integer
@@ -75,3 +77,66 @@ def is_prime(n):
 prime = array(nums.typecode, (x for x in range(2, 100) if is_prime(x)))
 print(prime)
 # You can also use array comprehension to create array 
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+numpy_array = arr([2, 4, 6, 8, 10])
+print(numpy_array)
+print(numpy_array.dtype)
+# Create array using array function of numpy
+# Dont have to explicitly declare the data type 
+numpy_array = arr([2, 4, 6, 8, 10], float)
+print(numpy_array.dtype)
+
+"""
+Output:
+[ 2  4  6  8 10]
+int64
+float64
+"""
+
+numpy_arr = linspace(1, 50, 10)
+print(numpy_arr)
+# This will divide 1-50 into 10 parts and create an array
+# It includes the extreme value 
+# This has start, stop and parts 
+"""
+Output:
+[ 1. 6.44444444 11.88888889 17.33333333 22.77777778 28.22222222 33.66666667 39.11111111 44.55555556 50.]
+"""
+
+numpy_arr = geomspace(1, 1000, 4)
+print(numpy_arr)
+# This geometricallt divides the parts in 4 parts
+"""
+Output:
+[   1.   10.  100. 1000.]
+"""
+
+numpy_arr = logspace(1, 40, 5)
+print(numpy_arr)
+# This is same as linspace but It starts from 10log base 1 to 10log base 40 and divides to 5 parts
+"""
+Output:
+[1.00000000e+01 5.62341325e+10 3.16227766e+20 1.77827941e+30 1.00000000e+40]
+"""
+
+numpy_arr = arange(1, 50, 3)
+print(numpy_arr)
+# This is same as range but create array of it 
+# this has a start, stop and steps 
+"""
+Output:
+[ 1  4  7 10 13 16 19 22 25 28 31 34 37 40 43 46 49]
+"""
+
+numpy_arr = ones(5)
+print(numpy_arr)
+numpy_arr = zeros(5)
+print(numpy_arr)
+# This creates array with 5 1s and 5 0s
+"""
+Output:
+[1. 1. 1. 1. 1.]
+[0. 0. 0. 0. 0.]
+"""
