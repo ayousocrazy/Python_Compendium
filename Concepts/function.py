@@ -63,6 +63,3 @@ xtra_large(l)
 print(l)
 print(id(l))
 # list is mutable so when we pass lists as argements they are mutable arguments
-
-# -------------------------------------------------------------------------------------------------------------------------
-
