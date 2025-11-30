@@ -40,3 +40,29 @@ info("Ram Chand", age = 44, profession = "trader", DOB = "12 Jan 1999")
 
 # -------------------------------------------------------------------------------------------------------------------------
 
+def xtra(num):
+    print(id(num))
+    num = 20
+    print(id(num))
+
+a = 10
+print(id(a))
+xtra(a)
+print(a)
+print(id(a))
+# Here integer, float or string are immutable so when we pass them they are called immutable arguments
+
+def xtra_large(lst):
+    lst[0], lst[1], lst[2] = 11, 22, 33
+    print(id(lst))
+
+l = [10, 20, 30]
+print(l)
+print(id(l))
+xtra_large(l)
+print(l)
+print(id(l))
+# list is mutable so when we pass lists as argements they are mutable arguments
+
+# -------------------------------------------------------------------------------------------------------------------------
+
