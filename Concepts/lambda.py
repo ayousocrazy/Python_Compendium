@@ -43,3 +43,11 @@ These are some built-in function where lambda function can be used
 
 # -------------------------------------------------------------------------------------------------------------------------
 
+def func(n):
+    return lambda a : f"{a} * {n} = {a*n}"
+
+result = func(9)
+print(result)
+print(result(11))
+# You can also use lambda function as returning value of a function
+# The print(result(11)) works using the inline lambda method 
