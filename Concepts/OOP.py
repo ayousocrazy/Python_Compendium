@@ -5,12 +5,13 @@ Object are anything with attribute and methods
 
 class College:
     institute = "NEB"
-    # This is static/class variable and this is same for all objects of the class 
+    # This is a class variable (static variable)
+    # It is shared among all objects unless overridden by an instance variable
 
     def __init__(self, name, reg_no, address, students):
-        # The __init__ is like a constructor but it is not a actual constructor
-        # Constructor are methods that runs automatically when objects are created and they initialize the object
-        # __init__ also runs autometically and initializes the object
+        # __init__() is the initializer
+        # Python's actual constructor is __new__(), but __init__() is what initializes object attributes
+        # It runs automatically whenever an object is created
         self.name = name
         self.reg_no = reg_no
         self.address = address
@@ -79,11 +80,13 @@ class Bike:
         cls.wheels = 3
         return "Has 3 wheels now"
     # This is class method as it deals with class variable
+    # @classmethod receives the class as 'cls' and can modify class-level data
 
     @staticmethod
     def petrol_price():
         print("The petrol price is NRP 146")
-    # This is static method that does not deal with instance variable nor class variable
+    # @staticmethod does not receive the class or the object
+    # It is used when the method is logically related to the class but does not access class or instance variables
 
 bike1 = Bike('B AB 1445', 2017, 'Yamaha', 2.4)
 bike2 = Bike('B DE 2108', 2020, 'BMW', 1.6)
@@ -166,6 +169,9 @@ Storage: 256GB SSD
 1786502096288
 
 Like this you can have inner class 
+Inner (nested) classes are defined inside another class
+They are useful when the inner class is closely related to the parent class and should not be used independently
+
 """
 
 del Professor
@@ -258,7 +264,8 @@ class Water:
 class Amphibian(Land, Water): # This class is inheriting attribute and method from two classes
     def __init__(self): # The __init__ of parent class is initialized when child class doesn't have one
         super().__init__() # With super() you can access the parent class/ super class 
-        # But it follows MRO(method Resolution Order) from left to right so __init__ of Land will execute
+        # super() calls the next class in the Method Resolution Order (MRO)
+        # Because Amphibian inherits from (Land, Water), MRO runs left to right, so Land.__init__() runs first
         print("Initializing Amphibians")
 
     def locomotion(self):
@@ -304,10 +311,13 @@ Maintain the product
 Check quality and perform quality control
 Calculate P&L and maintain Books of Accounts
 
-This is duck typing. It doesnot matter which department is passed if the department has method execute it will work.
-Duck Typing = If an object has the method you want, you can use it.
-Python focuses on behavior, not the object’s actual type.
-“If it walks like a duck and quacks like a duck, it’s a duck.”
+This is duck typing. It doesnot matter which department is passed if the department has method execute it will work
+Duck Typing = If an object has the method you want, you can use it
+Python focuses on behavior, not the object’s actual type
+“If it walks like a duck and quacks like a duck, it’s a duck”
+
+In duck typing, the type of the object does NOT matter
+Only the presence of the required method matters
 
 like len() in string, tuple, lists
 """
@@ -316,7 +326,8 @@ like len() in string, tuple, lists
 
 class Account:
     def __init__(self, net_income = 0, interest = 0, tax = 0, depreciation = 0, amortization = 0): # this is called method overloading
-        # In python method overloading does not exist independently but we can give a default value that can be later over written
+        # Python does not support method overloading like Java/C++
+        # Instead, we use default arguments (*args, **kwargs) to simulate overloading behavior
         # In other language function1(a, b) and function1(a, b, c) can exist i.e. same method with same name but accepting different number of argument can exist this is method overloading
         self.net_income = net_income
         self.tax = tax
@@ -335,7 +346,7 @@ class Account:
             )
             return new
         else:
-            return TypeError("Can only add Account objects")
+            raise TypeError("Can only add Account objects")
 
 b1 = Account(1200, 300, 30, 200)
 b2 = Account(1300, 400, 500, 20, 40)
@@ -385,4 +396,120 @@ Child Running
 
 This is called method overriding where child class method over rides the parent class method
 Method overriding occurs when a child (derived) class defines a method with the same name as the parent class, but gives it a different implementation.
+Overriding happens when child class redefines the same method name as the parent class
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+class Citizen:
+    def __init__(self, name, citizenship_no, age, religion, DOB):
+        self.name = name
+        self.__citizenship_no = citizenship_no # adding __ encapsulates the attribute and make the property private
+        self.age = age
+        self.religion = religion
+        self.DOB = DOB
+
+    def get_citizenship_no(self):
+        return self.__citizenship_no # the private data can only be accessed from inside the class
+    
+    def update_citizenship_no(self, num):
+        if isinstance(num, (str, int)):
+            self.__citizenship_no = num
+        else:
+            print("Invalid format")
+            return("Invalid format")
+        
+del c1
+c1 = Citizen("Ramesh Pradhan", '14-22-44-1234', 24, 'Hindu', '10/10/2000')
+print(c1.name)
+# print(c1.__citizenship_no) # This will raise an error as this is a private attribute and it cannot be accessed from outside the class
+c1.__citizenship_no = "22-33-44-5678" # the private data cannot be changed outside the class
+print(c1.__citizenship_no)
+# It created another instance variable of c1 but didn't change the value 
+print(c1.get_citizenship_no())
+c1.update_citizenship_no("22-33-44-5678")
+print(c1.get_citizenship_no())
+print(c1._Citizen__citizenship_no) # This is not recommended
+# In this way python uses name mangling to access private properties
+# When you use double underscores __, Python automatically renames it internally by adding _ClassName in front.
+
+"""
+Output:
+Ramesh Pradhan
+22-33-44-5678
+14-22-44-1234
+22-33-44-5678
+
+Double underscore (__var) → Private attribute  
+- Python applies name-mangling → _ClassName__var  
+- Cannot be accessed or modified directly outside the class.
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+class Vote:
+    def __init__(self, name, voter_no, nin, DOB):
+        self.name = name
+        self.DOB = DOB
+        self.__voter_no = voter_no
+        self.__nin = nin
+
+    def __validate(self, voter_no, nin): # This is private method as it cannot be accessed from outside the class
+        if isinstance(voter_no, str) and isinstance(nin, str):
+            return True
+        else:
+            return False
+        
+    def update_voter_id(self, voter_no, nin):
+        if self.__validate(voter_no, nin):
+            self.__voter_no = voter_no
+            self.__nin = nin
+        else:
+            print("Invalid NIN or Voter Number")
+    
+    def get_voter_number(self):
+        return self.__voter_no
+    
+    def get_nin(self):
+        return self.__nin
+    
+v1 = Vote("Narayan Gopal", '12245', '22-43-66-7812', '12/12/2005')
+print(v1.get_voter_number())
+print(v1.get_nin())
+# v1.__validate('12244', '22-43-66-7811') # this will raise an error because __validate is a private method
+v1.update_voter_id('12244', '22-43-66-7811')
+print(v1.get_voter_number())
+print(v1.get_nin())
+
+"""
+Output:
+12245
+22-43-66-7812
+12244
+22-43-66-7811
+
+Private methods (__method):
+- Can only be called inside the class.
+- Name-mangled: _ClassName__method
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+class NID:
+    def __init__(self, name, nin):
+        self.name = name
+        self._nin = nin
+        # A single underscore _ is just a convention
+        # It tells other programmers that the property is intended for internal use, but Python doesn't enforce this restriction.
+
+n1 = NID('Brijesh Lama', 12556)
+print(n1._nin)
+
+"""
+Output:
+12556
+
+Single underscore (_var) → Protected (by convention only)  
+- Python does NOT enforce protection  
+- Developers treat it as "internal use".
 """
