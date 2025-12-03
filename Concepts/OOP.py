@@ -350,3 +350,39 @@ Output:
 
 This is called operator overloading
 """
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+class Parent:
+    def run(self):
+        print("Parent Compiling")
+        print("Parent Running")
+
+class Child1(Parent):
+    pass
+
+class Child2(Parent):
+    def run(self):
+        print("Child Compiling")
+        print("Child Running")
+
+c1 = Child1()
+c2 = Child2()
+
+print("c1 running")
+c1.run()
+print("c2 running")
+c2.run()
+
+"""
+Output:
+c1 running
+Parent Compiling
+Parent Running
+c2 running
+Child Compiling
+Child Running
+
+This is called method overriding where child class method over rides the parent class method
+Method overriding occurs when a child (derived) class defines a method with the same name as the parent class, but gives it a different implementation.
+"""
