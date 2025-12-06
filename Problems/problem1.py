@@ -31,5 +31,12 @@ def compress(arr):
 
     return count
 
-
+# TESTS
+print("Test 1:")
 print(compress([1,1,1,2,2,3,1]))
+
+print("Test 2:")
+print(compress(['a','A','b','a','a','A']))
+
+print("Test 3:")
+print(compress(['a','A','a',1,2,2,'b']))
