@@ -31,3 +31,6 @@ def is_balanced(s):
 # TESTS
 print("Test 1:")
 print(is_balanced("[{{{()}}}]"))
+
+print("Test 2:")
+print(is_balanced("][()()]"))
