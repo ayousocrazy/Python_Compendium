@@ -67,7 +67,7 @@ class LinkedList:
                 s = s.next
         print(None)
 
-# TESTS
+# TEST
 l = LinkedList(10)
 l.display()
 

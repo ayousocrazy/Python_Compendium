@@ -33,7 +33,7 @@ class TokenStream:
 
         return word
 
-# TESTS
+# TEST
 print("Test:")
 txt = "   hello   world this            is python     "
 for token in TokenStream(txt):
