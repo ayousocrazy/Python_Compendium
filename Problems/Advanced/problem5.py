@@ -17,3 +17,25 @@ Rules / Constraints
 -You cannot use loops—only recursion.
 -You can pass extra arguments in the recursion (like current string, counts of open and close parentheses).
 """
+
+def generate_parentheses(n):
+    result = []
+
+    def backtrack(current, open_count, close_count):
+        if len(current) == 2 * n:
+            result.append(current)
+            return
+
+        if open_count < n:
+            backtrack(current + "(", open_count + 1, close_count)
+
+        if close_count < open_count:
+            backtrack(current + ")", open_count, close_count + 1)
+
+    backtrack("", 0, 0)
+    return result
+
+
+# TEST
+for p in generate_parentheses(4):
+    print(p)
