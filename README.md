@@ -16,7 +16,7 @@ Python-Compendium/
 ├── 📂 Libraries/
 ├── 📂 Problems/
 │   └── 📂 Advanced/
-│   ├── 📂 Basics/
+│   ├── 📂 Intermediate/
 └── 📄 README.md
 ```
 
@@ -45,7 +45,7 @@ Python-Compendium/
   - `sys`
 
 ### 🔹 Problems
-- Divided into **Basics** and **Advanced** problem sets.
+- Divided into **Intermediate** and **Advanced** problem sets.
 - Each Python file contains:
   - The **problem statement written as comments**
   - The **solution implemented below**
@@ -57,7 +57,7 @@ Python-Compendium/
 
 ### If You Are Learning Python
 1. Start with `Concepts/Basics`
-2. Practice problems from `Problems/Basics`
+2. Practice problems from `Problems/Intermediate`
 3. Explore commonly used modules in `Libraries`
 4. Move on to `Concepts/Advanced`
 5. Challenge yourself with `Problems/Advanced`
