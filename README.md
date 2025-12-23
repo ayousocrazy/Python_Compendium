@@ -4,6 +4,24 @@ A comprehensive compendium of Python concepts, libraries, and practice problems�
 
 ---
 
+## 📂 Repository Structure
+
+```
+Python-Compendium/
+│
+├── 📂 Concepts/
+│   └── 📂 Advanced/
+│   ├── 📂 Basics/
+│
+├── 📂 Libraries/
+├── 📂 Problems/
+│   └── 📂 Advanced/
+│   ├── 📂 Basics/
+└── 📄 README.md
+```
+
+---
+
 ### 🔹 Concepts
 - **Basics**: Covers fundamental Python concepts such as variables, data types, loops, functions, etc.
 
