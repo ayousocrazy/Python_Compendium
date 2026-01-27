@@ -10,12 +10,14 @@ m = re.search(r'world', string) # Searches the word 'world' in string
 print(m)
 print(m.start()) # starting index of 'world' in string
 print(m.end()) # ending index of 'world' in string
+print(m.group(0))
 
 """
 Output:
 <re.Match object; span=(46, 51), match='world'>
 46
 51
+world
 """
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -55,8 +57,6 @@ print(re.findall(search11, text))
 print(re.findall(search12, text))
 print(re.findall(search13, text))
 print(re.findall(search14, text))
-
-
 
 """
 Output:
@@ -106,3 +106,71 @@ re.compile('[a-e]')
 """
 
 # -------------------------------------------------------------------------------------------------------------------------
+
+print(re.split(r'\d+', "Do things you like only 2 times, (day and night); or 4 times(morning, afternoon, evening and night)"))
+# splits string based on numbers
+
+print(re.split('[a-e]', "drop the beat", flags=re.IGNORECASE))
+# splits string based in a-e ignoring the case 
+
+pattern = re.compile(r'\W+')
+
+print(re.split(pattern, "An apple a day empties the apple basket", maxsplit=4))
+# splits string based on non-word character and maxsplit sets limit to number of splits by 4 i.e there will be max 5 items in list
+
+# .split() splits the string to list as per given pattern
+
+"""
+output:
+['Do things you like only ', ' times, (day and night); or ', ' times(morning, afternoon, evening and night)']
+['', 'rop th', ' ', '', '', 't']
+['An', 'apple', 'a', 'day', 'empties the apple basket']
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+print(re.sub('and', '&','bread and butter, peanut And butter'))
+# re.sub replaces a pattern with replacement string 
+
+print(re.sub('and', '&','bread and butter, peanut And butter', flags=re.IGNORECASE))
+# can add flags=re.IGNORECASE to replace irrespective to case
+
+pattern = re.compile(r'\d+')
+replacement = "number"
+print(re.sub(pattern, replacement, "6 7 has been cringe", count=1))
+# adding count only changes the count number of pattern 
+
+"""
+Output:
+bread & butter, peanut And butter
+bread & butter, peanut & butter
+number 7 has been cringe
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+string = "not being common and not being different is not being anything"
+
+replaced = re.subn(r"\sNOT\s", "!", string, flags=re.IGNORECASE)
+
+print(replaced)
+# .subn is same as sub but it also returns the number of occurrence replaced as well as a tuple
+print(replaced[0])
+print(replaced[1])
+
+"""
+Output:
+('not being common and!being different is!being anything', 2)
+not being common and!being different is!being anything
+2
+"""
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+print(re.escape("[Killing a mocking bird] is the first book I read"))
+# .escape adds a backslash (\) before all special characters in a string
+
+"""
+Output:
+\[Killing\ a\ mocking\ bird\]\ is\ the\ first\ book\ I\ read
+"""
