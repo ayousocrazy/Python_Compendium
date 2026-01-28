@@ -237,8 +237,14 @@ for x in ["aab", "ape", "aaabra", "dbra"]:
         print(x)
 
 for x in ["aba", "apex", "ape", "xbram", "aaba"]:
-    if re.search(r"(^a|^x)b|x$"):
+    if re.search(r"(^a|^x)b|x$", x):
         # () sign helps to group pattern 
+        print(x)
+
+print('\n')
+for x in ["abc", "abb", "abbc", "acd", "dabc"]:
+    if re.search(r"ab?c", x):
+        # ? indicates that the character immediate before ? can occur none or once
         print(x)
 
 # -------------------------------------------------------------------------------------------------------------------------
