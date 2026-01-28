@@ -239,5 +239,6 @@ for x in ["aab", "ape", "aaabra", "dbra"]:
 for x in ["aba", "apex", "ape", "xbram", "aaba"]:
     if re.search(r"(^a|^x)b|x$"):
         # () sign helps to group pattern 
+        print(x)
 
 # -------------------------------------------------------------------------------------------------------------------------
