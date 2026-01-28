@@ -174,3 +174,70 @@ print(re.escape("[Killing a mocking bird] is the first book I read"))
 Output:
 \[Killing\ a\ mocking\ bird\]\ is\ the\ first\ book\ I\ read
 """
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+"""
+Meta-characters
+"""
+
+match = re.findall(r"[a-l]", "All that glitters is not gold — sometimes it’s just cheap glitter", flags=re.IGNORECASE)
+# [] brackets represent character class here [a-l] represent [abcdefghijkl]
+print(match)
+
+match = re.findall(r"[^a-l]", "All that glitters is not gold — sometimes it’s just cheap glitter", flags=re.IGNORECASE)
+# ^ inside [] represents character except a-l. [^a-l] represents [mnopqrstuvwxyz1234567890] also special characters and space
+print(match)
+
+for x in ["Safe is better than sorry", "Better late than never — but never is often on time.", "Better known than liked — welcome to the internet."]:
+    if re.search(r"^better", x, flags=re.IGNORECASE):
+        # ^ checks if string starts with the pattern 
+        print(x)
+
+for x in ["Safe is better than sorry.", "Better late than never — but never is often on time.", "Better known than liked — welcome to the internet"]:
+    if re.search(r"\.$", x, flags=re.IGNORECASE):
+        # $ checks if string ends with the pattern 
+        print(x)
+
+for x in ["apple", "apex", "ape", "pie", "apppppp", "aep"]:
+    if (match:= re.search(r"a.p", x)):
+        # a.p matches any three consecutive characters: 'a', followed by any single character, followed by 'p'
+        print(x)
+
+print(re.findall(r".", "A.P.T"))
+# Here I want to find all .'s but it is using the meta character . 
+
+print(re.findall(r"\.", "A.P.T"))
+# adding \ infront of meta character makes it a common character
+
+pattern = re.compile(r'a..d|x$')
+# | acts as a or operator checking either of the patterns
+for x in ["abcd", "abcx", "bcd", "acd", "cd", "cdzx"]:
+    if pattern.search(x):
+        print(x)
+
+print("\n")
+for x in ["aaad", "abcx", "bcad", "acd", "ad", "cdzx"]:
+    if match:= re.search(r'a*d', x):
+        # * represents 0 or more occurence of a followed by d
+        # 0 or more occurence applies to character immediate before of * sign 
+        print(x)
+
+print("\n")
+for x in ["aaad", "abcx", "bcad", "acd", "ad", "cdzx"]:
+    if match:= re.search(r'a+d', x):
+        # + represents 1 or more occurence of a followed by d
+        # 1 or more occurence applies to character immediate before of + sign 
+        print(x)
+
+print("\n")
+for x in ["aab", "ape", "aaabra", "dbra"]:
+    if re.search(r'a{2,4}', x):
+        # {2, 4} prints when a continiously occurs 2-4 times
+        print(x)
+
+for x in ["aba", "apex", "ape", "xbram", "aaba"]:
+    if re.search(r"(^a|^x)b|x$"):
+        # () sign helps to group pattern 
+
+# -------------------------------------------------------------------------------------------------------------------------
